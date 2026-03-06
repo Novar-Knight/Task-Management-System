@@ -9,15 +9,24 @@ tasks = []
 
 def add_task():
     title = input("Enter task title: ")
-    if not validate_task_title(title):
+    try:
+        validate_task_title(title)
+    except ValueError as e:
+        print(e)       
         return
 
     description = input("Enter task description: ")
-    if not validate_task_description(description):
+    try:
+        validate_task_description(description)
+    except ValueError as e:
+        print(e)
         return
 
     due_date = input("Enter due date (YYYY-MM-DD): ")
-    if not validate_due_date(due_date):
+    try:
+        validate_due_date(due_date)
+    except ValueError as e:
+        print(e)
         return
 
     task = {
