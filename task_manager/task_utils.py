@@ -28,7 +28,7 @@ def add_task():
     }
 
     tasks.append(task)
-    print("Task added successfully.")
+    print("Task added successfully!")
 
 
 def mark_task_as_complete():
@@ -42,7 +42,7 @@ def mark_task_as_complete():
     try:
         choice = int(input("Select task number to mark complete: "))
         tasks[choice - 1]["completed"] = True
-        print("Task marked as complete.")
+        print("Task marked as complete!")
     except (ValueError, IndexError):
         print("Invalid task number.")
 
@@ -57,13 +57,7 @@ def view_pending_tasks():
     for task in pending:
         print(f"{task['title']} - Due: {task['due_date']}")
 
-
-def calculate_progress():
-    if not tasks:
-        print("No tasks available.")
-        return
-
+def calculate_progress(tasks):
     completed = sum(1 for task in tasks if task["completed"])
     progress = (completed / len(tasks)) * 100
-
-    print(f"Progress: {progress:.2f}% ({completed}/{len(tasks)} tasks completed)")
+    return progress
